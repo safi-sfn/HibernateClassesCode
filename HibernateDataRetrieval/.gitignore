@@ -1,1 +1,18 @@
-/target/
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Maven
+target/
+*.war
+*.ear
+
+# IDE
+.idea/
+*.iml
+
+# System
+.DS_Store
+Thumbs.db
