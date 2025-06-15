@@ -42,17 +42,21 @@ public class LaunchApp {
 		
 		Answer ans2 = new Answer();
 		ans2.setId(2);
-		ans2.setAnswer("It is a Specification used to persist"
+		ans2.setAnswer("It is a Specification used to persist "
 				+ "data between java object and relational database");
 		
 		que2.setAnswer(ans2);
 		
+		Question qa = session.get(Question.class, 1);
+		System.out.println(qa);
+		
+		
 		try {
 			
-			transaction = session.beginTransaction();
-			session.persist(que1);
-			session.persist(que2);
-			flag = true;
+//			transaction = session.beginTransaction();
+//			session.persist(que1);
+//			session.persist(que2);
+//			flag = true;
 			
 		} 
 		catch (HibernateException e) {
