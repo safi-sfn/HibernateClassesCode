@@ -28,41 +28,50 @@ public class LaunchMainApp {
 		sessionFactory = config.buildSessionFactory();
 		session = sessionFactory.openSession();
 		
-		QuestionTable q1 = new QuestionTable();
-		q1.setId(1);
-		q1.setQuestion("Which interface is the main entry point for Hibernate operations?");
+//		QuestionTable q1 = new QuestionTable();
+//		q1.setId(1);
+//		q1.setQuestion("Which interface is the main entry point for Hibernate operations?");
+//		
+//		AnswerTable ans1 = new AnswerTable();
+//		ans1.setId(1);
+//		ans1.setAnswer("Session");
+//		ans1.setQuestion(q1);
+//		
+//		AnswerTable ans2 = new AnswerTable();
+//		ans2.setId(2);
+//		ans2.setAnswer("SessionFactory");
+//		ans2.setQuestion(q1);
+//		
+//		AnswerTable ans3 = new AnswerTable();
+//		ans3.setId(3);
+//		ans3.setAnswer("Transaction");
+//		ans3.setQuestion(q1);
+//		
+//		AnswerTable ans4 = new AnswerTable();
+//		ans4.setId(4);
+//		ans4.setAnswer("Query");
+//		ans4.setQuestion(q1);
+//		
+//		List<AnswerTable> answers = new ArrayList<AnswerTable>();
+//		answers.add(ans1);
+//		answers.add(ans2);
+//		answers.add(ans3);
+//		answers.add(ans4);
+//		
+//		q1.setAnswerList(answers);
+//		
+		QuestionTable question = session.get(QuestionTable.class,1);
+		System.out.println(question.getQuestion());
+
+		// for data retrieving
+		for(AnswerTable answer: question.getAnswerList()) {
+			System.out.println(answer.getAnswer());
+		}
 		
-		AnswerTable ans1 = new AnswerTable();
-		ans1.setId(1);
-		ans1.setAnswer("Session");
-		ans1.setQuestion(q1);
-		
-		AnswerTable ans2 = new AnswerTable();
-		ans2.setId(2);
-		ans2.setAnswer("SessionFactory");
-		ans2.setQuestion(q1);
-		
-		AnswerTable ans3 = new AnswerTable();
-		ans3.setId(3);
-		ans3.setAnswer("Transaction");
-		ans3.setQuestion(q1);
-		
-		AnswerTable ans4 = new AnswerTable();
-		ans4.setId(4);
-		ans4.setAnswer("Query");
-		ans4.setQuestion(q1);
-		
-		List<AnswerTable> answers = new ArrayList<AnswerTable>();
-		answers.add(ans1);
-		answers.add(ans2);
-		answers.add(ans3);
-		answers.add(ans4);
-		
-		q1.setAnswerList(answers);
 		
 		try {
 			transaction = session.beginTransaction();
-			session.persist(q1);
+			//session.persist(q1);
 			flag=true;
 		}
 		catch(HibernateException e) {
