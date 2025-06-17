@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -75,6 +76,14 @@ public class LaunchMainApp {
 				transaction.commit();
 			else
 				transaction.rollback();
+			
+			try {
+				fis.close();
+				reader.close();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
 			
 			session.close();
 			sessionFactory.close();
